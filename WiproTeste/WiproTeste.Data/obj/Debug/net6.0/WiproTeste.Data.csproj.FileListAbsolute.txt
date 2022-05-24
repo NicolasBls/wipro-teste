@@ -1,0 +1,14 @@
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\bin\Debug\net6.0\WiproTeste.Data.deps.json
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\bin\Debug\net6.0\WiproTeste.Data.runtimeconfig.json
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\bin\Debug\net6.0\WiproTeste.Data.dll
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\bin\Debug\net6.0\WiproTeste.Data.pdb
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.csproj.AssemblyReference.cache
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.AssemblyInfoInputs.cache
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.AssemblyInfo.cs
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.dll
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\refint\WiproTeste.Data.dll
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.pdb
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\WiproTeste.Data.genruntimeconfig.cache
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste.Data\obj\Debug\net6.0\ref\WiproTeste.Data.dll
