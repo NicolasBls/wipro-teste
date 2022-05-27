@@ -10,22 +10,17 @@ namespace WiproTeste.Data.Entities
 {
     public class Clientes
     {
+        public Clientes()
+        {
+            Locacoes = new HashSet<Locacoes>();
+        }
+
         public int Id { get; set; }
-
-        [Required]
-        public string Nome { get; set; }
-
-        [Required]
-        public string Documento { get; set; }
-
-        [Required]
+        public string Nome { get; set; } = null!;
+        public string Documento { get; set; } = null!;
         public ClientesStatus Status { get; set; }
 
-        public Clientes (string nome, string documento)
-        {
-            Nome = nome;
-            Documento = documento;
-            Status = ClientesStatus.Ativo;
-        }
+        public virtual ICollection<Locacoes> Locacoes { get; set; }
+
     }
 }

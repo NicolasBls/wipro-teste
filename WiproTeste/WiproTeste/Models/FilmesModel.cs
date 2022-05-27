@@ -6,6 +6,6 @@ namespace WiproTeste.Models
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public FilmesStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }

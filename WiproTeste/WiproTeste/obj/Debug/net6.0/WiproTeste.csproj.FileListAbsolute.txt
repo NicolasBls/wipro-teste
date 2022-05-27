@@ -88,3 +88,5 @@ C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\D
 C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\Debug\net6.0\WiproTeste.Data.dll
 C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\Debug\net6.0\WiproTeste.Data.pdb
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Nicolas Lins\Documents\Projects\wipro-teste\WiproTeste\WiproTeste\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

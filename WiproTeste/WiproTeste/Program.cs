@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WiproTeste.Data;
+using WiproTeste.Data.Repositories;
+using WiproTeste.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<DataContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DataContext")));
+builder.Services.AddDbContext<DataContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DataContext"));
+});
+
+builder.Services.AddScoped<IClientesRepository, ClientesRepository>();
+builder.Services.AddScoped<IFilmesRepository, FilmesRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

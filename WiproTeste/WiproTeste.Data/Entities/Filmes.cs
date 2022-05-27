@@ -10,19 +10,15 @@ namespace WiproTeste.Data.Entities
 {
     public class Filmes
     {
-        [Key]
+        public Filmes()
+        {
+            Locacoes = new HashSet<Locacoes>();
+        }
+
         public int Id { get; set; }
-
-        [Required]
-        public string Titulo { get; set; }
-
-        [Required]
+        public string Titulo { get; set; } = null!;
         public FilmesStatus Status { get; set; }
 
-        public Filmes(string titulo)
-        {
-            Titulo = titulo;
-            Status = FilmesStatus.Disponivel;
-        } 
+        public virtual ICollection<Locacoes> Locacoes { get; set; }
     }
 }

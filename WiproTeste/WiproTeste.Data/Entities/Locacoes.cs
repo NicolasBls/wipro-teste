@@ -9,24 +9,22 @@ namespace WiproTeste.Data.Entities
 {
     public class Locacoes
     {
-        [Key]
         public int Id { get; set; }
-
-        [Required]
-        public Clientes Cliente { get; set; }
-
-        [Required]
-        public Filmes Filme { get; set; }
-
-        [Required]
+        public int ClienteId { get; set; }
+        public int FilmeId { get; set; }
         public DateTime DataLocacao { get; set; }
-        
-        public DateTime DataDevolucao { get; set; }
+        public DateTime? DataDevolucao { get; set; }
 
-        public Locacoes(Clientes cliente, Filmes filme, DateTime dataLocacao)
+        public virtual Clientes Cliente { get; set; } = null!;
+        public virtual Filmes Filme { get; set; } = null!;
+
+        public Locacoes()
         {
-            Cliente = cliente;
-            Filme = filme;
+        }
+        public Locacoes(int clienteId, int filmeId, DateTime dataLocacao)
+        {
+            ClienteId = clienteId;
+            FilmeId = filmeId;
             DataLocacao = dataLocacao;
         }
     }

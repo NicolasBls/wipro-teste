@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ROf1ITx7jd+pJ659HSVzQa0+sMQ7z7fYmi8u7B+T7vPNCXIXwKtwnjA27qeQJ/JV/DPYUoGTa2KusVvA6uRNBQ==",
+  "dgSpecHash": "bZuylSeKB1M+jC22mo9O4/0q5a0AXMgUcOBrv5ruqdDHBaaXEUHKQo30PUxM/VF6b0iaalu6vAmVSDbYuJpgVw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nicolas Lins\\Documents\\Projects\\wipro-teste\\WiproTeste\\WiproTeste\\WiproTeste.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nicolas Lins\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Nicolas Lins\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Nicolas Lins\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Nicolas Lins\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Nicolas Lins\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Nicolas Lins\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Nicolas Lins\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Nicolas Lins\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.5\\microsoft.entityframeworkcore.6.0.5.nupkg.sha512",
