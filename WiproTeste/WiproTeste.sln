@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiproTeste", "WiproTeste\WiproTeste.csproj", "{B16B23CD-4A73-463E-9FED-48576F5691C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiproTeste.Data", "WiproTeste.Data\WiproTeste.Data.csproj", "{44CB8680-617B-4007-9A70-507717FE5C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiproTeste.Data", "WiproTeste.Data\WiproTeste.Data.csproj", "{44CB8680-617B-4007-9A70-507717FE5C8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -32,10 +32,28 @@ namespace WiproTeste.Controllers
             return Ok(resultMapped);
         }
 
-        [HttpGet("List")]
-        public IActionResult GetAll()
+        [HttpGet("Catalogo")]
+        public IActionResult Catalogo()
         {
             var result = filmesRepository.GetAll();
+            var resultMapped = mapper.Map<List<FilmesModel>>(result);
+
+            return Ok(resultMapped);
+        }
+
+        [HttpGet("Disponiveis")]
+        public IActionResult Disponiveis()
+        {
+            var result = filmesRepository.Disponiveis();
+            var resultMapped = mapper.Map<List<FilmesModel>>(result);
+
+            return Ok(resultMapped);
+        }
+
+        [HttpGet("Locados")]
+        public IActionResult Locados()
+        {
+            var result = filmesRepository.Locados();
             var resultMapped = mapper.Map<List<FilmesModel>>(result);
 
             return Ok(resultMapped);

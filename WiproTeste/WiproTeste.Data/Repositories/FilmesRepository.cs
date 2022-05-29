@@ -15,6 +15,10 @@ namespace WiproTeste.Data.Repositories
         public Filmes Create(Filmes cliente);
         public Filmes Update(Filmes cliente);
         public bool Delete(int id);
+        public List<Filmes> Disponiveis();
+        public List<Filmes> Locados();
+        public bool Locar(int id);
+        public string Devolver(int id);
 
     }
     public class FilmesRepository : IFilmesRepository
@@ -44,7 +48,7 @@ namespace WiproTeste.Data.Repositories
             if (filmesDB != null)
                 return false;
 
-            filmesDB.Status = FilmesStatus.Indisponivel;
+            filmesDB.Status = FilmesStatus.Deletado;
             dataContext.Filmes.Update(filmesDB);
             return true;
         }
@@ -61,6 +65,18 @@ namespace WiproTeste.Data.Repositories
             return result;
         }
 
+        public List<Filmes> Disponiveis()
+        {
+            var result = dataContext.Filmes.Where(x=>x.Status == FilmesStatus.Disponivel).ToList();
+            return result;
+        }
+
+        public List<Filmes> Locados()
+        {
+            var result = dataContext.Filmes.Where(x => x.Status == FilmesStatus.Locado).ToList();
+            return result;
+        }
+
         public Filmes Update(Filmes filme)
         {
             var filmesDB = dataContext.Filmes.FirstOrDefault(x => x.Id == filme.Id);
@@ -72,6 +88,29 @@ namespace WiproTeste.Data.Repositories
             dataContext.SaveChanges();
             var result = filmesDB;
             return result;
+        }
+
+        public bool Locar(int id)
+        {
+            var filmesDB = dataContext.Filmes.FirstOrDefault(x => x.Id == id && x.Status == FilmesStatus.Disponivel);
+            if (filmesDB == null)
+                return false;
+
+            filmesDB.Status = FilmesStatus.Locado;
+            dataContext.Update(filmesDB);
+            return true;
+        }
+
+        public string Devolver(int id)
+        {
+            var filmesDB = dataContext.Filmes.FirstOrDefault(x => x.Id == id && x.Status == FilmesStatus.Locado);
+            if (filmesDB == null)
+                return "Filme não localizado.";
+
+            filmesDB.Status = FilmesStatus.Disponivel;
+            dataContext.Update(filmesDB);
+            dataContext.SaveChanges();
+            return null;
         }
     }
 }

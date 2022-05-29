@@ -13,6 +13,7 @@ namespace WiproTeste.Data.Entities
         public int ClienteId { get; set; }
         public int FilmeId { get; set; }
         public DateTime DataLocacao { get; set; }
+        public DateTime DataVencimento { get; set; }
         public DateTime? DataDevolucao { get; set; }
 
         public virtual Clientes Cliente { get; set; } = null!;
@@ -21,11 +22,12 @@ namespace WiproTeste.Data.Entities
         public Locacoes()
         {
         }
-        public Locacoes(int clienteId, int filmeId, DateTime dataLocacao)
+        public Locacoes(int clienteId, int filmeId)
         {
             ClienteId = clienteId;
             FilmeId = filmeId;
-            DataLocacao = dataLocacao;
+            DataLocacao = DateTime.Now;
+            DataVencimento = DateTime.Now.AddDays(2).Date;
         }
     }
 }

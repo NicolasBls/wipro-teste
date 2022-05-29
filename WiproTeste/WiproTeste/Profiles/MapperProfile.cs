@@ -21,6 +21,7 @@ namespace WiproTeste.Profiles
                 .ForMember(
                 dest => dest.FilmeTitulo,
                 opt => opt.MapFrom(src => src.Filme.Titulo)).ReverseMap();
+            CreateMap<ClienteRequestModel,Clientes>();
         }
     }
 }

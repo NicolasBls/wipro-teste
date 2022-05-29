@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WiproTeste.Data.Entities;
+using WiproTeste.Data.Entities.Enuns;
 
 namespace WiproTeste.Data
 {
@@ -24,6 +26,9 @@ namespace WiproTeste.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Clientes>().Navigation(c => c.Locacoes).AutoInclude();
+            modelBuilder.Entity<Locacoes>().Navigation(l => l.Filme).AutoInclude();
+
             modelBuilder.Entity<Clientes>(entity =>
             {
                 entity.Property(e => e.Documento)
@@ -33,6 +38,8 @@ namespace WiproTeste.Data
                 entity.Property(e => e.Nome)
                     .HasMaxLength(250)
                     .IsUnicode(false);
+                //entity.HasDiscriminator(e => e.Status)
+                //    .HasValue<ClientesAtivos>(ClientesStatus.Ativo);
             });
 
             modelBuilder.Entity<Filmes>(entity =>
@@ -45,6 +52,8 @@ namespace WiproTeste.Data
             modelBuilder.Entity<Locacoes>(entity =>
             {
                 entity.Property(e => e.DataDevolucao).HasColumnType("date");
+
+                entity.Property(e => e.DataVencimento).HasColumnType("date");
 
                 entity.Property(e => e.DataLocacao).HasColumnType("date");
 
@@ -65,5 +74,15 @@ namespace WiproTeste.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        //public void Configure (EntityTypeBuilder<ClientesAtivos> builder)
+        //{
+        //    builder.HasBaseType<ClientesAtivos>();
+        //}
     }
+
+
+    //public class ClientesAtivos : Clientes
+    //{
+    //}
 }

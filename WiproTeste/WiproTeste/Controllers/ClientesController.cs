@@ -36,13 +36,16 @@ namespace WiproTeste.Controllers
         public IActionResult GetAll()
         {
             var result = clientesRepository.GetAll();
+            if (result == null)
+                return NotFound("Cliente não localizado.");
+
             var resultMapped = mapper.Map<List<ClientesModel>>(result);
 
             return Ok(resultMapped);
         }
 
         [HttpPost]
-        public IActionResult Post(ClientesModel clientesModel)
+        public IActionResult Post(ClienteRequestModel clientesModel)
         {
             var clientesMapped = mapper.Map<Clientes>(clientesModel);
             var result = clientesRepository.Create(clientesMapped);
@@ -55,7 +58,7 @@ namespace WiproTeste.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put(ClientesModel clientesModel)
+        public IActionResult Put(ClienteRequestModel clientesModel)
         {
             var clientesMapped = mapper.Map<Clientes>(clientesModel);
             var result = clientesRepository.Update(clientesMapped);
@@ -78,28 +81,23 @@ namespace WiproTeste.Controllers
         }
 
         [HttpPost("{id}/Locar")]
-        public IActionResult Locar(int id, int[] filmesId)
+        public IActionResult Locar(int id, int filmeId)
         {
-            var result = clientesRepository.Locar(id, filmesId);
+            var result = clientesRepository.Locar(id, filmeId);
             if (result == null)
-                return NotFound("Cliente ou filme não localizado.");
+                return NotFound("Cliente ou filme não localizado ou não disponível para locação.");
 
             var resultMapped = mapper.Map<ClientesModel>(result);
 
             return Ok(resultMapped);
-
         }
 
         [HttpPost("{id}/Devolver")]
-        public IActionResult Devolver(int id, int[] filmesId)
+        public IActionResult Devolver(int id, int filmeId)
         {
-            var result = clientesRepository.Devolver(id, filmesId);
-            if (result == null)
-                return NotFound("Cliente não localizado.");
+            var result = clientesRepository.Devolver(id, filmeId);
 
-            var resultMapped = mapper.Map<ClientesModel>(result);
-
-            return Ok(resultMapped);
+            return Ok(result);
 
         }
     }

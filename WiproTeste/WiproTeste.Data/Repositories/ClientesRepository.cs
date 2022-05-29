@@ -16,28 +16,40 @@ namespace WiproTeste.Data.Repositories
         public Clientes Create(Clientes cliente);
         public Clientes Update(Clientes cliente);
         public bool Delete(int id);
-        public Clientes Locar(int id, int[] filmesId);
-        public Clientes Devolver(int id, int[]? filmesId);
+        public Clientes Locar(int id, int filmeId);
+        public string Devolver(int id, int filmeId);
 
     }
     public class ClientesRepository : IClientesRepository
     {
         private readonly DataContext dataContext;
-        public ClientesRepository(DataContext dataContext)
+        private readonly IFilmesRepository filmesRepository;
+        public ClientesRepository(DataContext dataContext, IFilmesRepository filmesRepository)
         {
             this.dataContext = dataContext;
+            this.filmesRepository = filmesRepository;
         }
 
 
         public Clientes GetById(int id)
         {
             var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
+            if (result == null)
+                return null;
+
+            result.Locacoes = result.Locacoes.OrderBy(x=>x.DataDevolucao).ToList();
+
             return result;
         }
 
         public List<Clientes> GetAll()
         {
             var result = dataContext.Clientes.ToList();
+            if (result == null)
+                return null;
+            foreach(var item in result)
+                item.Locacoes = item.Locacoes.OrderBy(x => x.DataDevolucao).ToList();
+
             return result;
         }
 
@@ -47,6 +59,7 @@ namespace WiproTeste.Data.Repositories
             if (clienteDB != null)
                 return null;
 
+            cliente.Id = 0;
             cliente.Status = ClientesStatus.Ativo;
             dataContext.Clientes.Add(cliente);
             dataContext.SaveChanges();
@@ -56,65 +69,68 @@ namespace WiproTeste.Data.Repositories
 
         public Clientes Update(Clientes cliente)
         {
-            var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id);
-            if (clienteDB != null)
+            var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id && x.Status == ClientesStatus.Ativo);
+            if (clienteDB == null)
                 return null;
             clienteDB.Nome = cliente.Nome;
             clienteDB.Documento = cliente.Documento;
 
             dataContext.Clientes.Update(clienteDB);
             dataContext.SaveChanges();
-            var result = clienteDB;
+            var result = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id);
             return result;
         }
 
         public bool Delete(int id)
         {
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
-            if (clienteDB != null)
+            if (clienteDB == null)
                 return false;
 
             clienteDB.Status = ClientesStatus.Inativo;
             dataContext.Clientes.Update(clienteDB);
+            dataContext.SaveChanges();
             return true;
         }
 
-        public Clientes Locar(int id, int[] filmesId)
+        public Clientes Locar(int id, int filmeId)
         {
-            var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
-            var existeFilmesDB = dataContext.Filmes.Any(x => !filmesId.Contains(x.Id));
-            if (clienteDB == null || existeFilmesDB)
+            var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == id && x.Status == ClientesStatus.Ativo);
+            var existeFilmeDB = dataContext.Filmes.Any(x => filmeId == x.Id && x.Status == FilmesStatus.Disponivel);
+            if (clienteDB == null || !existeFilmeDB)
                 return null;
 
-            var locacoes = new List<Locacoes>();
+            var resultFilme = filmesRepository.Locar(filmeId);
+            if (resultFilme == null)
+                return null;
 
-            foreach (var filmeId in filmesId)
-                locacoes.Add(new Locacoes(id, filmeId, DateTime.Now));
+            var locacao = new Locacoes(id, filmeId);
 
-            clienteDB.Locacoes = locacoes;
-            dataContext.Clientes.Update(clienteDB);
+            dataContext.Locacoes.Add(locacao);
             dataContext.SaveChanges();
             var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
 
             return result;
         }
 
-        public Clientes Devolver(int id, int[]? filmesId)
+        public string Devolver(int id, int filmeId)
         {
-            var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
-            if (clienteDB == null)
-                return null;
+            var locacao = dataContext.Locacoes.FirstOrDefault(x => x.ClienteId == id &&  x.FilmeId == filmeId);
+            if (locacao == null)
+                return "Cliente ou filme não localizado.";
 
-            var locacoes = dataContext.Locacoes.Where(x => x.ClienteId == id && (filmesId == null || filmesId.Contains(x.FilmeId)));
 
-            foreach (var locacao in locacoes)
-                locacao.DataDevolucao = DateTime.Now;
+            locacao.DataDevolucao = DateTime.Now;
 
-            dataContext.Locacoes.UpdateRange(locacoes);
+            var resultFilme = filmesRepository.Devolver(filmeId);
+            if (resultFilme != null)
+                return resultFilme;
+
+            dataContext.Locacoes.Update(locacao);
             dataContext.SaveChanges();
-            var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
-
-            return result;
+            if (locacao.DataDevolucao.Value.Date > locacao.DataVencimento.Date)
+                return "Devolvido com atrazo.";
+            return "Devolvido com sucesso.";
         }
     }
 }

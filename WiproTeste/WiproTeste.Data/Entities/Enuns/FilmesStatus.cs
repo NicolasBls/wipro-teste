@@ -8,7 +8,8 @@ namespace WiproTeste.Data.Entities.Enuns
 {
     public enum FilmesStatus : int
     {
-        Indisponivel = 0,
-        Disponivel = 1
+        Deletado = 0,
+        Disponivel = 1,
+        Locado = 2,
     }
 }
