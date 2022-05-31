@@ -15,9 +15,17 @@ namespace WiproTeste.Data.Entities
             Locacoes = new HashSet<Locacoes>();
         }
 
+        public Clientes(int id, string nome, string documento, ClientesStatus status, ICollection<Locacoes>? locacoes = null) {
+            this.Id = id;
+            this.Nome = nome;
+            this.Documento = documento;
+            this.Status = status;
+            this.Locacoes = locacoes ?? new HashSet<Locacoes>();
+        }
+
         public int Id { get; set; }
-        public string Nome { get; set; } = null!;
-        public string Documento { get; set; } = null!;
+        public string Nome { get; set; }
+        public string Documento { get; set; }
         public ClientesStatus Status { get; set; }
 
         public virtual ICollection<Locacoes> Locacoes { get; set; }

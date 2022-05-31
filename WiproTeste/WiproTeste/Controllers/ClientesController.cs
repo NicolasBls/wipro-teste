@@ -25,6 +25,7 @@ namespace WiproTeste.Controllers
             var result = clientesRepository.GetById(id);
 
             if (result == null)
+                // TODO: pode ser melhorado aqui eu poderia criuart erros customizados
                 return NotFound("Cliente não localizado.");
 
             var resultMapped = mapper.Map<ClientesModel>(result);

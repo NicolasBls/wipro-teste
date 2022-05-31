@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiproTeste", "WiproTeste\Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WiproTeste.Data", "WiproTeste.Data\WiproTeste.Data.csproj", "{44CB8680-617B-4007-9A70-507717FE5C8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WiproTeste.Tester", "WiproTeste.Tester\WiproTeste.Tester.csproj", "{53BC8BBE-2D75-4A3D-B507-BE7D27A9B276}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44CB8680-617B-4007-9A70-507717FE5C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44CB8680-617B-4007-9A70-507717FE5C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44CB8680-617B-4007-9A70-507717FE5C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53BC8BBE-2D75-4A3D-B507-BE7D27A9B276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BC8BBE-2D75-4A3D-B507-BE7D27A9B276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BC8BBE-2D75-4A3D-B507-BE7D27A9B276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BC8BBE-2D75-4A3D-B507-BE7D27A9B276}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

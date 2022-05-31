@@ -11,9 +11,9 @@ namespace WiproTeste.Data.Repositories
 {
     public interface IClientesRepository
     {
-        public Clientes GetById(int id);
+        public Clientes? GetById(int id);
         public List<Clientes> GetAll();
-        public Clientes Create(Clientes cliente);
+        public Clientes? Create(Clientes cliente);
         public Clientes Update(Clientes cliente);
         public bool Delete(int id);
         public Clientes Locar(int id, int filmeId);
@@ -31,13 +31,11 @@ namespace WiproTeste.Data.Repositories
         }
 
 
-        public Clientes GetById(int id)
+        public Clientes? GetById(int id)
         {
             var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
-            if (result == null)
-                return null;
-
-            result.Locacoes = result.Locacoes.OrderBy(x=>x.DataDevolucao).ToList();
+            if (result != null)
+                result.Locacoes = result.Locacoes.OrderBy(x=>x.DataDevolucao).ToList();
 
             return result;
         }
@@ -53,7 +51,7 @@ namespace WiproTeste.Data.Repositories
             return result;
         }
 
-        public Clientes Create(Clientes cliente)
+        public Clientes? Create(Clientes cliente)
         {
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Documento.Equals(cliente.Documento));
             if (clienteDB != null)
@@ -72,6 +70,7 @@ namespace WiproTeste.Data.Repositories
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id && x.Status == ClientesStatus.Ativo);
             if (clienteDB == null)
                 return null;
+                
             clienteDB.Nome = cliente.Nome;
             clienteDB.Documento = cliente.Documento;
 
