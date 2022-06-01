@@ -23,15 +23,15 @@ builder.Services.AddAutoMapper(typeof(MapperProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.  
-if (app.Environment.IsDevelopment())
+var contentRoot = builder.Configuration.GetValue<string>(WebHostDefaults.ContentRootKey);
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.RoutePrefix = string.Empty;
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-}
+    c.RoutePrefix = string.Empty;
+    c.SwaggerEndpoint($"{contentRoot}/swagger/v1/swagger.json", "My API V1");
+});
+
 
 app.UseHttpsRedirection();
 
