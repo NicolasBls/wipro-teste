@@ -38,8 +38,6 @@ namespace WiproTeste.Data
                 entity.Property(e => e.Nome)
                     .HasMaxLength(250)
                     .IsUnicode(false);
-                //entity.HasDiscriminator(e => e.Status)
-                //    .HasValue<ClientesAtivos>(ClientesStatus.Ativo);
             });
 
             modelBuilder.Entity<FilmesModel>(entity =>
@@ -74,15 +72,5 @@ namespace WiproTeste.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-        //public void Configure (EntityTypeBuilder<ClientesAtivos> builder)
-        //{
-        //    builder.HasBaseType<ClientesAtivos>();
-        //}
     }
-
-
-    //public class ClientesAtivos : Clientes
-    //{
-    //}
 }

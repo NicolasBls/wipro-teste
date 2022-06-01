@@ -1,4 +1,4 @@
-﻿namespace WiproTeste.Models
+﻿namespace WiproTeste.DTOs
 {
     public class ClienteRequestDto
     {

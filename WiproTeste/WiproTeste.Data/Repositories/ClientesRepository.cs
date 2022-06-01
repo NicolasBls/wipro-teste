@@ -35,7 +35,7 @@ namespace WiproTeste.Data.Repositories
         {
             var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
             if (result != null)
-                result.Locacoes = result.Locacoes.OrderBy(x=>x.DataDevolucao).ToList();
+                result.Locacoes = result.Locacoes.OrderBy(x => x.DataDevolucao).ToList();
 
             return result;
         }
@@ -45,7 +45,7 @@ namespace WiproTeste.Data.Repositories
             var result = dataContext.Clientes.ToList();
             if (result == null)
                 return null;
-            foreach(var item in result)
+            foreach (var item in result)
                 item.Locacoes = item.Locacoes.OrderBy(x => x.DataDevolucao).ToList();
 
             return result;
@@ -62,6 +62,7 @@ namespace WiproTeste.Data.Repositories
             dataContext.Clientes.Add(cliente);
             dataContext.SaveChanges();
             var result = dataContext.Clientes.FirstOrDefault(x => x.Documento.Equals(cliente.Documento));
+
             return result;
         }
 
@@ -70,7 +71,7 @@ namespace WiproTeste.Data.Repositories
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id && x.Status == ClientesStatus.Ativo);
             if (clienteDB == null)
                 return null;
-                
+
             clienteDB.Nome = cliente.Nome;
             clienteDB.Documento = cliente.Documento;
 
@@ -114,7 +115,7 @@ namespace WiproTeste.Data.Repositories
 
         public string Devolver(int id, int filmeId)
         {
-            var locacao = dataContext.Locacoes.FirstOrDefault(x => x.ClienteId == id &&  x.FilmeId == filmeId);
+            var locacao = dataContext.Locacoes.FirstOrDefault(x => x.ClienteId == id && x.FilmeId == filmeId);
             if (locacao == null)
                 return "Cliente ou filme não localizado.";
 

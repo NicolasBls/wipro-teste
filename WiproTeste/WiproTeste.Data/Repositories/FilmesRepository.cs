@@ -39,7 +39,7 @@ namespace WiproTeste.Data.Repositories
             dataContext.Filmes.Add(filme);
             dataContext.SaveChanges();
             var result = dataContext.Filmes.FirstOrDefault(x => x.Titulo.Equals(filme.Titulo));
-            return result;  
+            return result;
         }
 
         public bool Delete(int id)
@@ -67,7 +67,7 @@ namespace WiproTeste.Data.Repositories
 
         public List<FilmesModel> Disponiveis()
         {
-            var result = dataContext.Filmes.Where(x=>x.Status == FilmesStatus.Disponivel).ToList();
+            var result = dataContext.Filmes.Where(x => x.Status == FilmesStatus.Disponivel).ToList();
             return result;
         }
 
@@ -83,7 +83,7 @@ namespace WiproTeste.Data.Repositories
             if (filmesDB != null)
                 return null;
             filmesDB.Titulo = filme.Titulo;
-            
+
             dataContext.Filmes.Update(filmesDB);
             dataContext.SaveChanges();
             var result = filmesDB;

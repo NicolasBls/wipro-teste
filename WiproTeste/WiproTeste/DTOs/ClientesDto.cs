@@ -1,6 +1,6 @@
 ﻿using WiproTeste.Data.Entities.Enuns;
 
-namespace WiproTeste.Models
+namespace WiproTeste.DTOs
 {
     public class ClientesDto
     {

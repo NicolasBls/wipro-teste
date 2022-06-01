@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using WiproTeste.Data.Entities;
 using WiproTeste.Data.Repositories;
-using WiproTeste.Models;
+using WiproTeste.DTOs;
 
 namespace WiproTeste.Controllers
 {
+    // TODO: pode ser melhorado, criar erros customizados
+
     [ApiController]
     [Route("[controller]")]
     public class ClientesController : ControllerBase
@@ -25,7 +27,6 @@ namespace WiproTeste.Controllers
             var result = clientesRepository.GetById(id);
 
             if (result == null)
-                // TODO: pode ser melhorado aqui eu poderia criuart erros customizados
                 return NotFound("Cliente não localizado.");
 
             var resultMapped = mapper.Map<ClientesDto>(result);

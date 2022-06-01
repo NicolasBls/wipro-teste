@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using WiproTeste.Data.Entities;
-using WiproTeste.Models;
+using WiproTeste.DTOs;
 
 namespace WiproTeste.Profiles
 {

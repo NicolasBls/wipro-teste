@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using WiproTeste.Data.Entities;
 using WiproTeste.Data.Repositories;
-using WiproTeste.Models;
+using WiproTeste.DTOs;
 
 namespace WiproTeste.Controllers
 {
+    // TODO: pode ser melhorado, criar erros customizados
+
     [ApiController]
     [Route("[controller]")]
     public class FilmesController : ControllerBase

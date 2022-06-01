@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WiproTeste.Controllers;
 using WiproTeste.Data.Entities;
 using WiproTeste.Data.Entities.Enuns;
-using WiproTeste.Models;
+using WiproTeste.DTOs;
 using WiproTeste.Profiles;
 using WiproTeste.Tester.Mocks;
 using Xunit;
