@@ -16,9 +16,9 @@ namespace WiproTeste.Data
         {
         }
 
-        public virtual DbSet<Clientes> Clientes { get; set; } = null!;
-        public virtual DbSet<Filmes> Filmes { get; set; } = null!;
-        public virtual DbSet<Locacoes> Locacoes { get; set; } = null!;
+        public virtual DbSet<ClientesModel> Clientes { get; set; } = null!;
+        public virtual DbSet<FilmesModel> Filmes { get; set; } = null!;
+        public virtual DbSet<LocacoesModel> Locacoes { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,10 +26,10 @@ namespace WiproTeste.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Clientes>().Navigation(c => c.Locacoes).AutoInclude();
-            modelBuilder.Entity<Locacoes>().Navigation(l => l.Filme).AutoInclude();
+            modelBuilder.Entity<ClientesModel>().Navigation(c => c.Locacoes).AutoInclude();
+            modelBuilder.Entity<LocacoesModel>().Navigation(l => l.Filme).AutoInclude();
 
-            modelBuilder.Entity<Clientes>(entity =>
+            modelBuilder.Entity<ClientesModel>(entity =>
             {
                 entity.Property(e => e.Documento)
                     .HasMaxLength(20)
@@ -42,14 +42,14 @@ namespace WiproTeste.Data
                 //    .HasValue<ClientesAtivos>(ClientesStatus.Ativo);
             });
 
-            modelBuilder.Entity<Filmes>(entity =>
+            modelBuilder.Entity<FilmesModel>(entity =>
             {
                 entity.Property(e => e.Titulo)
                     .HasMaxLength(250)
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Locacoes>(entity =>
+            modelBuilder.Entity<LocacoesModel>(entity =>
             {
                 entity.Property(e => e.DataDevolucao).HasColumnType("date");
 

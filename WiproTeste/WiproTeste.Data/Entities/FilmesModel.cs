@@ -8,17 +8,17 @@ using WiproTeste.Data.Entities.Enuns;
 
 namespace WiproTeste.Data.Entities
 {
-    public class Filmes
+    public class FilmesModel
     {
-        public Filmes()
+        public FilmesModel()
         {
-            Locacoes = new HashSet<Locacoes>();
+            Locacoes = new HashSet<LocacoesModel>();
         }
 
         public int Id { get; set; }
         public string Titulo { get; set; } = null!;
         public FilmesStatus Status { get; set; }
 
-        public virtual ICollection<Locacoes> Locacoes { get; set; }
+        public virtual ICollection<LocacoesModel> Locacoes { get; set; }
     }
 }

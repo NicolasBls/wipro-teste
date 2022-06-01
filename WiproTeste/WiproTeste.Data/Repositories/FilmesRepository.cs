@@ -10,13 +10,13 @@ namespace WiproTeste.Data.Repositories
 {
     public interface IFilmesRepository
     {
-        public Filmes GetById(int id);
-        public List<Filmes> GetAll();
-        public Filmes Create(Filmes cliente);
-        public Filmes Update(Filmes cliente);
+        public FilmesModel GetById(int id);
+        public List<FilmesModel> GetAll();
+        public FilmesModel Create(FilmesModel cliente);
+        public FilmesModel Update(FilmesModel cliente);
         public bool Delete(int id);
-        public List<Filmes> Disponiveis();
-        public List<Filmes> Locados();
+        public List<FilmesModel> Disponiveis();
+        public List<FilmesModel> Locados();
         public bool Locar(int id);
         public string Devolver(int id);
 
@@ -29,7 +29,7 @@ namespace WiproTeste.Data.Repositories
             this.dataContext = dataContext;
         }
 
-        public Filmes Create(Filmes filme)
+        public FilmesModel Create(FilmesModel filme)
         {
             var filmeDB = dataContext.Filmes.FirstOrDefault(x => x.Titulo.Equals(filme.Titulo));
             if (filmeDB != null)
@@ -53,31 +53,31 @@ namespace WiproTeste.Data.Repositories
             return true;
         }
 
-        public List<Filmes> GetAll()
+        public List<FilmesModel> GetAll()
         {
             var result = dataContext.Filmes.ToList();
             return result;
         }
 
-        public Filmes GetById(int id)
+        public FilmesModel GetById(int id)
         {
             var result = dataContext.Filmes.FirstOrDefault(x => x.Id == id);
             return result;
         }
 
-        public List<Filmes> Disponiveis()
+        public List<FilmesModel> Disponiveis()
         {
             var result = dataContext.Filmes.Where(x=>x.Status == FilmesStatus.Disponivel).ToList();
             return result;
         }
 
-        public List<Filmes> Locados()
+        public List<FilmesModel> Locados()
         {
             var result = dataContext.Filmes.Where(x => x.Status == FilmesStatus.Locado).ToList();
             return result;
         }
 
-        public Filmes Update(Filmes filme)
+        public FilmesModel Update(FilmesModel filme)
         {
             var filmesDB = dataContext.Filmes.FirstOrDefault(x => x.Id == filme.Id);
             if (filmesDB != null)

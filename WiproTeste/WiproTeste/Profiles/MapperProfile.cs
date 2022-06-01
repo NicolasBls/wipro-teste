@@ -8,20 +8,20 @@ namespace WiproTeste.Profiles
     {
         public MapperProfile()
         {
-            CreateMap<Clientes, ClientesModel>().ForMember(
+            CreateMap<ClientesModel, ClientesDto>().ForMember(
                 dest => dest.Status,
                 opt => opt.MapFrom(src => src.Status.ToString())).ReverseMap();
-            CreateMap<Filmes, FilmesModel>().ForMember(
+            CreateMap<FilmesModel, FilmesDto>().ForMember(
                 dest => dest.Status,
                 opt => opt.MapFrom(src => src.Status.ToString())).ReverseMap();
-            CreateMap<Locacoes, LocacoesModel>()
+            CreateMap<LocacoesModel, LocacoesDto>()
                 .ForMember(
                 dest => dest.ClienteNome,
                 opt => opt.MapFrom(src => src.Cliente.Nome))
                 .ForMember(
                 dest => dest.FilmeTitulo,
                 opt => opt.MapFrom(src => src.Filme.Titulo)).ReverseMap();
-            CreateMap<ClienteRequestModel,Clientes>();
+            CreateMap<ClienteRequestDto,ClientesModel>();
         }
     }
 }

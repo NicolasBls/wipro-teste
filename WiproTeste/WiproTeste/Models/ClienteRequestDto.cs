@@ -1,6 +1,6 @@
 ﻿namespace WiproTeste.Models
 {
-    public class ClienteRequestModel
+    public class ClienteRequestDto
     {
         public int Id { get; set; }
 
@@ -8,12 +8,13 @@
         public string Documento { get; set; }
 
 
-        public ClienteRequestModel(string nome, string documento)
+        public ClienteRequestDto(string nome, string documento, int? id = 1)
         {
             Nome = nome;
             Documento = documento;
+            Id = Id;
         }
-        public ClienteRequestModel()
+        public ClienteRequestDto()
         {
 
         }

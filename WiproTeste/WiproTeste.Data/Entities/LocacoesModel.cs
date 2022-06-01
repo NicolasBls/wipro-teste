@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WiproTeste.Data.Entities
 {
-    public class Locacoes
+    public class LocacoesModel
     {
         public int Id { get; set; }
         public int ClienteId { get; set; }
@@ -16,13 +16,13 @@ namespace WiproTeste.Data.Entities
         public DateTime DataVencimento { get; set; }
         public DateTime? DataDevolucao { get; set; }
 
-        public virtual Clientes Cliente { get; set; } = null!;
-        public virtual Filmes Filme { get; set; } = null!;
+        public virtual ClientesModel Cliente { get; set; } = null!;
+        public virtual FilmesModel Filme { get; set; } = null!;
 
-        public Locacoes()
+        public LocacoesModel()
         {
         }
-        public Locacoes(int clienteId, int filmeId)
+        public LocacoesModel(int clienteId, int filmeId)
         {
             ClienteId = clienteId;
             FilmeId = filmeId;

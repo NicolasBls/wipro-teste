@@ -2,13 +2,13 @@
 
 namespace WiproTeste.Models
 {
-    public class ClientesModel
+    public class ClientesDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Documento { get; set; }
         public string Status { get; set; }
-        public List<LocacoesModel> Locacoes { get; set; }
+        public List<LocacoesDto> Locacoes { get; set; }
 
     }
 }

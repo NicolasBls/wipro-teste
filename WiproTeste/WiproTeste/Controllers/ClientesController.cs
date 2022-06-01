@@ -28,7 +28,7 @@ namespace WiproTeste.Controllers
                 // TODO: pode ser melhorado aqui eu poderia criuart erros customizados
                 return NotFound("Cliente não localizado.");
 
-            var resultMapped = mapper.Map<ClientesModel>(result);
+            var resultMapped = mapper.Map<ClientesDto>(result);
 
             return Ok(resultMapped);
         }
@@ -40,33 +40,33 @@ namespace WiproTeste.Controllers
             if (result == null)
                 return NotFound("Cliente não localizado.");
 
-            var resultMapped = mapper.Map<List<ClientesModel>>(result);
+            var resultMapped = mapper.Map<List<ClientesDto>>(result);
 
             return Ok(resultMapped);
         }
 
         [HttpPost]
-        public IActionResult Post(ClienteRequestModel clientesModel)
+        public IActionResult Post(ClienteRequestDto clientesModel)
         {
-            var clientesMapped = mapper.Map<Clientes>(clientesModel);
+            var clientesMapped = mapper.Map<ClientesModel>(clientesModel);
             var result = clientesRepository.Create(clientesMapped);
             if (result == null)
                 return BadRequest("Documento já cadastrado.");
 
-            var resultMapped = mapper.Map<ClientesModel>(result);
+            var resultMapped = mapper.Map<ClientesDto>(result);
 
             return Created("", resultMapped);
         }
 
         [HttpPut]
-        public IActionResult Put(ClienteRequestModel clientesModel)
+        public IActionResult Put(ClienteRequestDto clientesModel)
         {
-            var clientesMapped = mapper.Map<Clientes>(clientesModel);
+            var clientesMapped = mapper.Map<ClientesModel>(clientesModel);
             var result = clientesRepository.Update(clientesMapped);
             if (result == null)
                 return NotFound("Cliente não localizado.");
 
-            var resultMapped = mapper.Map<ClientesModel>(result);
+            var resultMapped = mapper.Map<ClientesDto>(result);
 
             return Ok(resultMapped);
         }
@@ -88,7 +88,7 @@ namespace WiproTeste.Controllers
             if (result == null)
                 return NotFound("Cliente ou filme não localizado ou não disponível para locação.");
 
-            var resultMapped = mapper.Map<ClientesModel>(result);
+            var resultMapped = mapper.Map<ClientesDto>(result);
 
             return Ok(resultMapped);
         }

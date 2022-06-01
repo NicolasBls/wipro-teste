@@ -2,7 +2,7 @@
 
 namespace WiproTeste.Models
 {
-    public class FilmesModel
+    public class FilmesDto
     {
         public int? Id { get; set; }
         public string Titulo { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace WiproTeste.Models
 {
-    public class LocacoesModel
+    public class LocacoesDto
     {
         public int Id { get; set; }
         public int ClienteId { get; set; }

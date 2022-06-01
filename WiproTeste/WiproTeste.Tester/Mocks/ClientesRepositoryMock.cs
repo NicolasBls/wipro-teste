@@ -4,42 +4,45 @@ using WiproTeste.Data.Repositories;
 
 public class ClientesRepositoryMock : IClientesRepository
 {
-    public Clientes? GetByIdResult;
-    public Clientes? createResult;
+    public ClientesModel? GetByIdResult;
+    public ClientesModel? CreateResult;
+    public bool DeleteResult;
+    public string DevolverResult;
+    public ClientesModel? UpdateResult;
+    public ClientesModel? LocarResult;
 
-    public Clientes? Create(Clientes cliente)
+    public ClientesModel? Create(ClientesModel cliente)
     {
-        return createResult;
+        return CreateResult;
     }
 
     public bool Delete(int id)
     {
-        throw new NotImplementedException();
+        return DeleteResult;
     }
 
-    // use tuplas
     public string Devolver(int id, int filmeId)
     {
-        throw new NotImplementedException();
+        return DevolverResult;
     }
 
-    public List<Clientes> GetAll()
+    public List<ClientesModel> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public Clientes GetById(int id)
+    public ClientesModel GetById(int id)
     {
         return GetByIdResult;
     }
 
-    public Clientes Locar(int id, int filmeId)
+    public ClientesModel? Locar(int id, int filmeId)
     {
-        throw new NotImplementedException();
+        return LocarResult;
     }
 
-    public Clientes Update(Clientes cliente)
+    public ClientesModel? Update(ClientesModel cliente)
     {
-        throw new NotImplementedException();
+        return UpdateResult;
     }
 }

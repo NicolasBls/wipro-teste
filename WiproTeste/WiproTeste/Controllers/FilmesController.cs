@@ -27,7 +27,7 @@ namespace WiproTeste.Controllers
             if (result == null)
                 return NotFound();
 
-            var resultMapped = mapper.Map<FilmesModel>(result);
+            var resultMapped = mapper.Map<FilmesDto>(result);
 
             return Ok(resultMapped);
         }
@@ -36,7 +36,7 @@ namespace WiproTeste.Controllers
         public IActionResult Catalogo()
         {
             var result = filmesRepository.GetAll();
-            var resultMapped = mapper.Map<List<FilmesModel>>(result);
+            var resultMapped = mapper.Map<List<FilmesDto>>(result);
 
             return Ok(resultMapped);
         }
@@ -45,7 +45,7 @@ namespace WiproTeste.Controllers
         public IActionResult Disponiveis()
         {
             var result = filmesRepository.Disponiveis();
-            var resultMapped = mapper.Map<List<FilmesModel>>(result);
+            var resultMapped = mapper.Map<List<FilmesDto>>(result);
 
             return Ok(resultMapped);
         }
@@ -54,33 +54,33 @@ namespace WiproTeste.Controllers
         public IActionResult Locados()
         {
             var result = filmesRepository.Locados();
-            var resultMapped = mapper.Map<List<FilmesModel>>(result);
+            var resultMapped = mapper.Map<List<FilmesDto>>(result);
 
             return Ok(resultMapped);
         }
 
         [HttpPost]
-        public IActionResult Post(FilmesModel filmesModel)
+        public IActionResult Post(FilmesDto filmesModel)
         {
-            var filmesMapped = mapper.Map<Filmes>(filmesModel);
+            var filmesMapped = mapper.Map<FilmesModel>(filmesModel);
             var result = filmesRepository.Create(filmesMapped);
             if (result == null)
                 return BadRequest();
 
-            var resultMapped = mapper.Map<FilmesModel>(result);
+            var resultMapped = mapper.Map<FilmesDto>(result);
 
             return Created("", resultMapped);
         }
 
         [HttpPut]
-        public IActionResult Put(FilmesModel filmesModel)
+        public IActionResult Put(FilmesDto filmesModel)
         {
-            var filmesMapped = mapper.Map<Filmes>(filmesModel);
+            var filmesMapped = mapper.Map<FilmesModel>(filmesModel);
             var result = filmesRepository.Update(filmesMapped);
             if (result == null)
                 return NotFound();
 
-            var resultMapped = mapper.Map<FilmesModel>(result);
+            var resultMapped = mapper.Map<FilmesDto>(result);
 
             return Ok(resultMapped);
         }

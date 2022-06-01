@@ -8,19 +8,19 @@ using WiproTeste.Data.Entities.Enuns;
 
 namespace WiproTeste.Data.Entities
 {
-    public class Clientes
+    public class ClientesModel
     {
-        public Clientes()
+        public ClientesModel()
         {
-            Locacoes = new HashSet<Locacoes>();
+            Locacoes = new HashSet<LocacoesModel>();
         }
 
-        public Clientes(int id, string nome, string documento, ClientesStatus status, ICollection<Locacoes>? locacoes = null) {
+        public ClientesModel(int id, string nome, string documento, ClientesStatus status, ICollection<LocacoesModel>? locacoes = null) {
             this.Id = id;
             this.Nome = nome;
             this.Documento = documento;
             this.Status = status;
-            this.Locacoes = locacoes ?? new HashSet<Locacoes>();
+            this.Locacoes = locacoes ?? new HashSet<LocacoesModel>();
         }
 
         public int Id { get; set; }
@@ -28,7 +28,7 @@ namespace WiproTeste.Data.Entities
         public string Documento { get; set; }
         public ClientesStatus Status { get; set; }
 
-        public virtual ICollection<Locacoes> Locacoes { get; set; }
+        public virtual ICollection<LocacoesModel> Locacoes { get; set; }
 
     }
 }

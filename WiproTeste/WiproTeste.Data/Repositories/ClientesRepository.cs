@@ -11,12 +11,12 @@ namespace WiproTeste.Data.Repositories
 {
     public interface IClientesRepository
     {
-        public Clientes? GetById(int id);
-        public List<Clientes> GetAll();
-        public Clientes? Create(Clientes cliente);
-        public Clientes Update(Clientes cliente);
+        public ClientesModel? GetById(int id);
+        public List<ClientesModel> GetAll();
+        public ClientesModel? Create(ClientesModel cliente);
+        public ClientesModel? Update(ClientesModel cliente);
         public bool Delete(int id);
-        public Clientes Locar(int id, int filmeId);
+        public ClientesModel? Locar(int id, int filmeId);
         public string Devolver(int id, int filmeId);
 
     }
@@ -31,7 +31,7 @@ namespace WiproTeste.Data.Repositories
         }
 
 
-        public Clientes? GetById(int id)
+        public ClientesModel? GetById(int id)
         {
             var result = dataContext.Clientes.FirstOrDefault(x => x.Id == id);
             if (result != null)
@@ -40,7 +40,7 @@ namespace WiproTeste.Data.Repositories
             return result;
         }
 
-        public List<Clientes> GetAll()
+        public List<ClientesModel> GetAll()
         {
             var result = dataContext.Clientes.ToList();
             if (result == null)
@@ -51,7 +51,7 @@ namespace WiproTeste.Data.Repositories
             return result;
         }
 
-        public Clientes? Create(Clientes cliente)
+        public ClientesModel? Create(ClientesModel cliente)
         {
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Documento.Equals(cliente.Documento));
             if (clienteDB != null)
@@ -65,7 +65,7 @@ namespace WiproTeste.Data.Repositories
             return result;
         }
 
-        public Clientes Update(Clientes cliente)
+        public ClientesModel? Update(ClientesModel cliente)
         {
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == cliente.Id && x.Status == ClientesStatus.Ativo);
             if (clienteDB == null)
@@ -92,7 +92,7 @@ namespace WiproTeste.Data.Repositories
             return true;
         }
 
-        public Clientes Locar(int id, int filmeId)
+        public ClientesModel? Locar(int id, int filmeId)
         {
             var clienteDB = dataContext.Clientes.FirstOrDefault(x => x.Id == id && x.Status == ClientesStatus.Ativo);
             var existeFilmeDB = dataContext.Filmes.Any(x => filmeId == x.Id && x.Status == FilmesStatus.Disponivel);
@@ -100,10 +100,10 @@ namespace WiproTeste.Data.Repositories
                 return null;
 
             var resultFilme = filmesRepository.Locar(filmeId);
-            if (resultFilme == null)
+            if (!resultFilme)
                 return null;
 
-            var locacao = new Locacoes(id, filmeId);
+            var locacao = new LocacoesModel(id, filmeId);
 
             dataContext.Locacoes.Add(locacao);
             dataContext.SaveChanges();
@@ -117,7 +117,6 @@ namespace WiproTeste.Data.Repositories
             var locacao = dataContext.Locacoes.FirstOrDefault(x => x.ClienteId == id &&  x.FilmeId == filmeId);
             if (locacao == null)
                 return "Cliente ou filme não localizado.";
-
 
             locacao.DataDevolucao = DateTime.Now;
 
